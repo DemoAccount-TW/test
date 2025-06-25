@@ -233,7 +233,7 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,255,0);
             border-color: #FFD700;
         }
 
@@ -241,7 +241,7 @@
             transform: translateY(0);
         }
 
-        .btn.primary {
+        .btn-primary {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #333;
         }
@@ -268,10 +268,12 @@
             color: #333;
             padding: 30px;
             border-radius: 15px;
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
             text-align: center;
             backdrop-filter: blur(10px);
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .modal-title {
@@ -280,7 +282,7 @@
             color: #667eea;
         }
 
-        .human-rights-list {
+        .humanRights-list {
             text-align: left;
             margin: 15px 0;
             padding: 15px;
@@ -288,8 +290,74 @@
             border-radius: 8px;
         }
 
-        .human-rights-list li {
+        .humanRights-list li {
             margin-bottom: 8px;
+        }
+
+        /* New styles for human rights content */
+        .accordion {
+            margin: 15px 0;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .accordion-header {
+            padding: 10px;
+            cursor: pointer;
+            background: rgba(102, 126, 234, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: rgba(102, 126, 234, 0.15);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .quiz-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 8px;
+        }
+
+        .quiz-question {
+            margin-bottom: 15px;
+        }
+
+        .quiz-option {
+            display: block;
+            padding: 8px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .quiz-option:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .quiz-option.correct {
+            background: rgba(76, 175, 80, 0.3);
+        }
+
+        .quiz-option.incorrect {
+            background: rgba(244, 67, 54, 0.3);
         }
 
         @media (max-width: 768px) {
@@ -413,26 +481,99 @@
     <!-- 人權知識彈窗 -->
     <div class="modal" id="humanRightsModal">
         <div class="modal-content">
-            <h3 class="modal-title">📜 基本人權知識</h3>
-            <div class="human-rights-list">
-                <h4>聯合國世界人權宣言 - 基本權利：</h4>
-                <ul>
-                    <li>生命、自由和人身安全權</li>
-                    <li>免受奴役和酷刑的權利</li>
-                    <li>法律面前人人平等</li>
-                    <li>思想、良心和宗教自由</li>
-                    <li>言論和意見自由</li>
-                    <li>和平集會和結社自由</li>
-                    <li>工作和教育權利</li>
-                    <li>適當生活水準權</li>
-                    <li>參與文化生活權</li>
-                    <li>社會保障權</li>
-                </ul>
+            <h3 class="modal-title">📜 人權知識學習中心</h3>
+            <div class="humanRights-list">
+                <p style="margin-bottom: 15px;">探索人權的核心概念、歷史與實際案例，通過互動學習加深理解！</p>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>什麼是人權？</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>人權是每個人與生俱來的權利，不因種族、性別、國籍、宗教或任何身份而有所不同。它們是保障個人尊嚴、自由和平等的基礎。根據《世界人權宣言》（1948年），人權包括生命權、自由權、教育權等。</p>
+                            <p><strong>核心原則：</strong></p>
+                            <ul>
+                                <li>普遍性：人人享有</li>
+                                <li>不可剝奪：不能被任意奪走</li>
+                                <li>平等與非歧視：無差別對待</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>人權的歷史里程碑</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>人權的發展經歷了數世紀的演進，以下是重要里程碑：</p>
+                            <ul>
+                                <li><strong>1215年：</strong>《大憲章》限制王權，奠定法治基礎</li>
+                                <li><strong>1948年：</strong>聯合國通過《世界人權宣言》，首次明確全球人權標準</li>
+                                <li><strong>1966年：</strong>《公民權利和政治權利國際公約》與《經濟、社會及文化權利國際公約》生效</li>
+                                <li><strong>1989年：</strong>《兒童權利公約》保護兒童權益</li>
+                            </ul>
+                            <p>這些文件推動了全球人權保護的法律框架。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>聯合國世界人權宣言 - 核心權利</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>《世界人權宣言》列出了30項基本人權，以下是部分核心權利：</p>
+                            <ul>
+                                <li>生命、自由和人身安全權</li>
+                                <li>免受奴役和酷刑的權利</li>
+                                <li>法律面前人人平等</li>
+                                <li>思想、良心和宗教自由</li>
+                                <li>言論和意見自由</li>
+                                <li>和平集會和結社自由</li>
+                                <li>工作和教育權利</li>
+                                <li>適當生活水準權</li>
+                            </ul>
+                            <p>這些權利是全球人權保護的基石。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>實際案例</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>人權行動如何改變世界？以下是真實案例：</p>
+                            <ul>
+                                <li><strong>南非反種族隔離運動：</strong>納爾遜·曼德拉領導的運動終結了種族隔離制度，實現平等權利</li>
+                                <li><strong>女權運動：</strong>1920年美國婦女獲得投票權，推動全球性別平等</li>
+                                <li><strong>難民保護：</strong>聯合國難民署（UNHCR）幫助數百萬難民獲得安全與基本權利</li>
+                            </ul>
+                            <p>這些案例展示了人權行動的深遠影響。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-container">
+                    <h4>人權小測驗</h4>
+                    <p>測試你對人權的了解！選擇正確答案：</p>
+                    <div class="quiz-question">
+                        <p><strong>問題：</strong>《世界人權宣言》於哪一年通過？</p>
+                        <div class="quiz-option" onclick="checkAnswer(this, '1948')">1948年</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, '1966')">1966年</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, '1989')">1989年</div>
+                    </div>
+                    <p id="quizFeedback" style="display: none; margin-top: 10px;"></p>
+                </div>
+
                 <p style="margin-top: 15px; font-style: italic;">
                     "人權是每個人與生俱來的權利，不分種族、性別、國籍、民族、語言、宗教或任何其他身份。"
                 </p>
             </div>
-            <button class="btn primary" onclick="closeModal('humanRightsModal')">了解了</button>
+            <button class="btn primary" onclick="closeModal('humanRightsModal')">關閉</button>
         </div>
     </div>
 
@@ -515,26 +656,18 @@
 
         // 選擇地區
         function selectRegion(regionId) {
-            // 清除之前的選擇
             document.querySelectorAll('.region').forEach(r => r.classList.remove('selected'));
-            
-            // 選擇新地區
             document.getElementById(`region-${regionId}`).classList.add('selected');
             gameState.selectedRegion = regionId;
-            
             updateExecuteButton();
             addEvent(`選擇了 ${regions.find(r => r.id === regionId).name} 地區`);
         }
 
         // 選擇行動
         function selectAction(actionId) {
-            // 清除之前的選擇
             document.querySelectorAll('.action-card').forEach(c => c.classList.remove('selected'));
-            
-            // 選擇新行動
             document.getElementById(`action-${actionId}`).classList.add('selected');
             gameState.selectedAction = actionId;
-            
             updateExecuteButton();
             addEvent(`選擇了 ${actionCards.find(a => a.id === actionId).name} 行動`);
         }
@@ -560,27 +693,15 @@
             
             if (gameState.resourcePoints < action.cost) return;
             
-            // 消耗資源
             gameState.resourcePoints -= action.cost;
-            
-            // 應用效果
             let effectValue = action.effect;
-            if (region.status === 'crisis') effectValue *= 1.5; // 危機地區效果加倍
-            
+            if (region.status === 'crisis') effectValue *= 1.5;
             gameState.humanityScore += effectValue;
             gameState.humanityScore = Math.min(100, gameState.humanityScore);
-            
-            // 改善地區狀況
             improveRegionStatus(region);
-            
-            // 清除選擇
             clearSelections();
-            
-            // 更新顯示
             updateGameStats();
             addEvent(`在${region.name}執行${action.name}，人道指數提升${effectValue}點！`);
-            
-            // 檢查勝利條件
             checkWinCondition();
         }
 
@@ -591,9 +712,8 @@
             
             if (Math.random() < 0.6 && currentIndex < statusLevels.length - 1) {
                 region.status = statusLevels[currentIndex + 1];
-                createWorldMap(); // 重新繪製地圖
+                createWorldMap();
                 addEvent(`${region.name}的人權狀況有所改善！`);
-                
                 if (region.status === 'safe') {
                     gameState.crisisCount = Math.max(0, gameState.crisisCount - 1);
                 }
@@ -612,17 +732,10 @@
         // 下一回合
         function nextTurn() {
             gameState.turnNumber++;
-            gameState.resourcePoints = Math.min(15, gameState.resourcePoints + 3); // 每回合獲得資源
-            
-            // 隨機事件
+            gameState.resourcePoints = Math.min(15, gameState.resourcePoints + 3);
             generateRandomEvents();
-            
-            // 更新統計
             updateGameStats();
-            
             addEvent(`--- 第 ${gameState.turnNumber} 回合開始 ---`);
-            
-            // 檢查失敗條件
             if (gameState.turnNumber > gameState.maxTurns) {
                 checkLoseCondition();
             }
@@ -658,7 +771,6 @@
             document.getElementById('crisisCount').textContent = regions.filter(r => r.status === 'crisis').length;
             document.getElementById('turnNumber').textContent = gameState.turnNumber;
             document.getElementById('progressBar').style.width = `${gameState.humanityScore}%`;
-            
             updateExecuteButton();
         }
 
@@ -669,8 +781,6 @@
             eventItem.className = 'event-item';
             eventItem.textContent = text;
             eventLog.insertBefore(eventItem, eventLog.firstChild);
-            
-            // 限制記錄數量
             if (eventLog.children.length > 10) {
                 eventLog.removeChild(eventLog.lastChild);
             }
@@ -715,14 +825,12 @@
                 maxTurns: 15
             };
             
-            // 重置地區狀況
             regions.forEach((region, index) => {
                 const statuses = ['safe', 'threatened', 'crisis', 'safe', 'recovering', 'safe'];
                 region.status = statuses[index];
             });
             
             document.getElementById('eventLog').innerHTML = '<div class="event-item">遊戲重新開始！目標是提升全球人權狀況。</div>';
-            
             clearSelections();
             createWorldMap();
             updateGameStats();
@@ -752,8 +860,45 @@
             });
         });
 
+        // 切換手風琴內容
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                c.classList.remove('active');
+                c.previousElementSibling.querySelector('span:last-child').textContent = '▼';
+            });
+            
+            if (!isActive) {
+                content.classList.add('active');
+                header.querySelector('span:last-child').textContent = '▲';
+            }
+        }
+
+        // 檢查測驗答案
+        function checkAnswer(option, answer) {
+            const feedback = document.getElementById('quizFeedback');
+            const options = option.parentElement.querySelectorAll('.quiz-option');
+            
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+                opt.style.pointerEvents = 'none';
+            });
+            
+            if (answer === '1948') {
+                option.classList.add('correct');
+                feedback.textContent = '正確！《世界人權宣言》於1948年通過，是人權保護的重要里程碑。';
+                feedback.style.color = '#4CAF50';
+            } else {
+                option.classList.add('incorrect');
+                feedback.textContent = '答錯了！正確答案是1948年。';
+                feedback.style.color = '#F44336';
+            }
+            
+            feedback.style.display = 'block';
+        }
+
         // 初始化遊戲
         initGame();
     </script>
-</body>
-</html>
